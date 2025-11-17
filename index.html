@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <head>
    <style>
+	   .responsive-logo {
+  max-width: 100%;  /* scales down on smaller screens */
+  height: auto;     /* keeps aspect ratio */
+  display: block;   /* removes small gaps below the image */
+  margin: 0 auto;   /* centers the image */
+}
+
       * {
       margin: 0;
       padding: 0;
@@ -157,7 +164,7 @@
    </style>
 </head>
 <body>
-   <img src="./1.jpg" height="300" width="1000" alt="Storage Plus Logo">
+  <img src="./1.jpg" alt="Storage Plus Logo" class="responsive-logo">
    <h1>Storage Plus Intake Form</h1>
    <form action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="b8b4ae45-2c96-4194-994d-f108bb9d6b99">
@@ -391,3 +398,4 @@ document.querySelector('form').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
