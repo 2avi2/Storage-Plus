@@ -158,6 +158,7 @@
    <form action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="b8b4ae45-2c96-4194-994d-f108bb9d6b99">
       <p class="required-note">* indicates required fields</p>
+      
       <div class="form-section">
          <div class="section-title">Personal Information</div>
          <p>Business Name(if applicable):</p>
@@ -187,6 +188,7 @@
             </div>
          </div>
       </div>
+      
       <div class="form-section">
          <div class="section-title">Contact Information</div>
          <div class="form-row">
@@ -201,13 +203,12 @@
          </div>
          <p>Opt in for Text Messages(Msg & Data rates may apply) <span style="color: red;">*</span></p>
          <div class="checkbox-group">
-                <label>
-                  <input type="radio" name="text_opt_in" value="Yes" id="text_yes">       Yes
-                </label>
-                <label>
-                  <input type="radio" name="text_opt_in" value="No" id="text_no">       No
-                </label>
-                
+            <label>
+               <input type="radio" name="text_opt_in" value="Yes" id="text_yes">       Yes
+            </label>
+            <label>
+               <input type="radio" name="text_opt_in" value="No" id="text_no">       No
+            </label>
             <div id="text-checkbox-error" class="error-message">Please select Yes or No for text message opt-in</div>
          </div>
          <p>Primary Email Address: <span style="color: red;">*</span></p>
@@ -223,6 +224,7 @@
             </div>
          </div>
       </div>
+      
       <div class="form-section">
          <div class="section-title">Additional Access Authorization</div>
          <p>Additional Person(s) authorized for Access (vacate/close account, transfer, cutluck):</p>
@@ -233,26 +235,10 @@
          <p>Owner hereby grants month to month permission to the occupant listed above to store presonal property according to the terms and conditions of this aggreement in the stored unit at the facility first name above commencing on ____:</p>
          <input type="text" name="commencement_date" placeholder="Enter start date">
       </div>
+      
       <div class="form-section">
          <div class="section-title">Payment Information</div>
-         <p>Card Holder Name: <span style="color: red;">*</span></p>
-         <input type="text" name="card_holder_name" required placeholder="Enter cardholder name">
-         <div class="form-row">
-            <div>
-               <p>Card #: <span style="color: red;">*</span></p>
-               <input type="text" name="card_number" required placeholder="Enter card number">
-            </div>
-            <div>
-               <p>Experation Date: <span style="color: red;">*</span></p>
-               <input type="text" name="expiration_date" required placeholder="MM/YY">
-            </div>
-         </div>
-         <div class="form-row">
-            <div>
-               <p>CVC: <span style="color: red;">*</span></p>
-               <input type="text" name="cvc" required placeholder="Enter CVC">
-            </div>
-         </div>
+         
          <p>Address:</p>
          <input type="text" name="billing_address" placeholder="Enter billing address">
          <div class="form-row">
@@ -275,28 +261,32 @@
                <input type="text" name="billing_zip" placeholder="Enter zip code">
             </div>
          </div>
+         
          <p>I authorize Storage Plus to charge my account upon move in, for the total move in cost.</p>
          <p>I authorize Storage Plus to charge my account for the monthly occupancy charge.</p>
          <p>I aggree to enroll in the following monthly payment service:</p>
          <div class="checkbox-group">
             <label>
-            <input type="radio" id="box1" name="payment_method" value="Call In Payment">
-            Call In Payment
+               <input type="radio" id="box1" name="payment_method" value="Call In Payment">
+               Call In Payment
             </label>
             <label>
-            <input type="radio" id="box2" name="payment_method" value="Auto-payment">
-            Auto-payment
+               <input type="radio" id="box2" name="payment_method" value="Auto-payment">
+               Auto-payment
             </label>
             <div id="checkbox-error" class="error-message">Please select at least one payment method</div>
          </div>
       </div>
+      
       <div class="form-section">
          <div class="section-title">Agreement & Signature</div>
          <p>Initials: <span style="color: red;">*</span></p>
          <input type="text" name="initials" required placeholder="Enter your initials" maxlength="3">
       </div>
+      
       <button type="submit">Submit Form</button>
    </form>
+   
    <script>
       // Form validation on submit
       document.querySelector('form').addEventListener('submit', function(e) {
