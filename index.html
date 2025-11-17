@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 <head>
    <style>
       * {
@@ -150,6 +150,10 @@
       button[type="submit"]:active {
       background-color: #000;
       }
+	.hidden {
+  	display: none;
+	}
+
    </style>
 </head>
 <body>
@@ -163,8 +167,23 @@
          <div class="section-title">Personal Information</div>
          <p>Business Name(if applicable):</p>
          <input type="text" name="business_name" placeholder="Enter business name">
-         <p>Name <span style="color: red;">*</span></p>
-         <input type="text" name="name" required placeholder="Enter your full name">
+         
+
+<div class="form-row">
+  <div>
+    <p>First & Middle Name <span style="color: red;">*</span></p>
+    <input type="text" name="first_middle_name" required placeholder="Enter first & middle name">
+  </div>
+  <div>
+    <p>Last Name <span style="color: red;">*</span></p>
+    <input type="text" name="last_name" required placeholder="Enter last name">
+  </div>
+</div>
+
+
+
+
+
          <p>Address: <span style="color: red;">*</span></p>
          <input type="text" name="address" required placeholder="Enter street address">
          <div class="form-row">
@@ -213,7 +232,46 @@
          </div>
          <p>Primary Email Address: <span style="color: red;">*</span></p>
          <input type="email" name="email" required placeholder="Enter email address">
-         <div class="form-row">
+        
+      </div>
+      
+
+
+<div class="form-section">
+         <div class="section-title">Emergency Contact</div>
+         <p>We will only contact this person in the event of an emergency or as a last resort if the unit is assigned to auction.</p>
+         <p>First and Last Name:</p>
+         <input type="text" name="Emergency_person_1" placeholder="Enter first and last name">
+ 
+
+	<div class="form-row">
+            <div>
+               <p>Phone:</p>
+               <input type="tel" name="phone_1" placeholder="Enter phone number">
+            </div>
+        
+ 
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="form-section">
+         <div class="section-title">Additional Access Authorization</div>
+         <p>Additional Person(s) authorized for Access (vacate/close account, transfer, cutluck):</p>
+         <p>First and Last Name #1:</p>
+         <input type="text" name="authorized_person_1" placeholder="Enter first and last name">
+         <p>First and Last Name #2:</p>
+         <input type="text" name="authorized_person_2" placeholder="Enter first and last name">
+
+	<div class="form-row">
             <div>
                <p>Phone #1:</p>
                <input type="tel" name="phone_1" placeholder="Enter first phone number">
@@ -223,104 +281,113 @@
                <input type="tel" name="phone_2" placeholder="Enter second phone number">
             </div>
          </div>
-      </div>
-      
-      <div class="form-section">
-         <div class="section-title">Additional Access Authorization</div>
-         <p>Additional Person(s) authorized for Access (vacate/close account, transfer, cutluck):</p>
-         <p>First and Last Name:</p>
-         <input type="text" name="authorized_person_1" placeholder="Enter first and last name">
-         <p>First and Last Name:</p>
-         <input type="text" name="authorized_person_2" placeholder="Enter first and last name">
          <p>Owner hereby grants month to month permission to the occupant listed above to store presonal property according to the terms and conditions of this aggreement in the stored unit at the facility first name above commencing on ____:</p>
          <input type="text" name="commencement_date" placeholder="Enter start date">
       </div>
-      
-      <div class="form-section">
-         <div class="section-title">Payment Information</div>
-         
-         <p>Address:</p>
-         <input type="text" name="billing_address" placeholder="Enter billing address">
-         <div class="form-row">
-            <div>
-               <p>Apt:</p>
-               <input type="text" name="billing_apt" placeholder="Apartment/Suite">
-            </div>
-            <div>
-               <p>City:</p>
-               <input type="text" name="billing_city" placeholder="Enter city">
-            </div>
-         </div>
-         <div class="form-row">
-            <div>
-               <p>ST:</p>
-               <input type="text" name="billing_state" placeholder="Enter state">
-            </div>
-            <div>
-               <p>Zip Code:</p>
-               <input type="text" name="billing_zip" placeholder="Enter zip code">
-            </div>
-         </div>
-         
-         <p>I authorize Storage Plus to charge my account upon move in, for the total move in cost.</p>
-         <p>I authorize Storage Plus to charge my account for the monthly occupancy charge.</p>
-         <p>I aggree to enroll in the following monthly payment service:</p>
-         <div class="checkbox-group">
-            <label>
-               <input type="radio" id="box1" name="payment_method" value="Call In Payment">
-               Call In Payment
-            </label>
-            <label>
-               <input type="radio" id="box2" name="payment_method" value="Auto-payment">
-               Auto-payment
-            </label>
-            <div id="checkbox-error" class="error-message">Please select at least one payment method</div>
-         </div>
-      </div>
+       
+     <div class="form-section">
+   <div class="section-title">Payment Information</div>
+
+   <p><strong>Choose Payment Type:</strong></p>
+
+   <!-- MAIN PAYMENT OPTION: CASH OR CARD -->
+   <label>
+      <input type="radio" name="payment_type" value="Cash" onclick="togglePaymentOptions()">
+      Cash
+   </label>
+
+   <label>
+      <input type="radio" name="payment_type" value="Card" onclick="togglePaymentOptions()">
+      Card
+   </label>
+
+   <div id="payment-type-error" class="error-message">Please select Cash or Card</div>
+
+   <br><br>
+
+   <!-- HIDDEN UNTIL CARD IS SELECTED -->
+   <div id="cardSubOptions" class="hidden">
+
+      <p><strong>Card Payment Options:</strong></p>
+
+      <label>
+         <input type="radio" id="box1" name="payment_method" value="Call In Payment">
+         Call-In Payment
+      </label>
+
+      <label>
+         <input type="radio" id="box2" name="payment_method" value="Auto-payment">
+         Auto-payment
+      </label>
+
+      <div id="checkbox-error" class="error-message">Please select a card payment option</div>
+
+      <br><br>
+
+     
+</div>
+
       
       <div class="form-section">
          <div class="section-title">Agreement & Signature</div>
-         <p>Initials: <span style="color: red;">*</span></p>
-         <input type="text" name="initials" required placeholder="Enter your initials" maxlength="3">
+         <p>Name: <span style="color: red;">*</span></p>
+         <input type="text" name="Full Name" required placeholder="Enter your Full Name" maxlength="3">
       </div>
       
       <button type="submit">Submit Form</button>
    </form>
    
-   <script>
-      // Form validation on submit
-      document.querySelector('form').addEventListener('submit', function(e) {
-        // Validate payment method (at least one must be checked)
-        const paymentBox1 = document.getElementById('box1').checked;
-        const paymentBox2 = document.getElementById('box2').checked;
-        const paymentErrorSpan = document.getElementById('checkbox-error');
-        
-        // Validate text opt-in (at least one must be checked)
-        const textYes = document.getElementById('text_yes').checked;
-        const textNo = document.getElementById('text_no').checked;
-        const textErrorSpan = document.getElementById('text-checkbox-error');
-        
-        let isValid = true;
-        
-        if (!paymentBox1 && !paymentBox2) {
-          paymentErrorSpan.style.display = 'block';
-          isValid = false;
-        } else {
-          paymentErrorSpan.style.display = 'none';
-        }
-        
-        if (!textYes && !textNo) {
-          textErrorSpan.style.display = 'block';
-          isValid = false;
-        } else {
-          textErrorSpan.style.display = 'none';
-        }
-        
-        if (!isValid) {
-          e.preventDefault();
-          return false;
-        }
-      });
-   </script>
+<script>
+function togglePaymentOptions() {
+  const cardSelected = document.querySelector('input[name="payment_type"][value="Card"]').checked;
+  const cardDiv = document.getElementById("cardSubOptions");
+
+  if (cardSelected) {
+    cardDiv.classList.remove("hidden");
+  } else {
+    cardDiv.classList.add("hidden");
+
+    // Clear card-only selections if user switches to CASH
+    document.getElementById("box1").checked = false;
+    document.getElementById("box2").checked = false;
+  }
+}
+
+document.querySelector('form').addEventListener('submit', function(e) {
+
+  // Main payment type validation
+  const cash = document.querySelector('input[name="payment_type"][value="Cash"]').checked;
+  const card = document.querySelector('input[name="payment_type"][value="Card"]').checked;
+  const typeError = document.getElementById("payment-type-error");
+
+  let isValid = true;
+
+  if (!cash && !card) {
+    typeError.style.display = "block";
+    isValid = false;
+  } else {
+    typeError.style.display = "none";
+  }
+
+  // If CARD is chosen, enforce sub-options
+  if (card) {
+    const callIn = document.getElementById("box1").checked;
+    const autoPay = document.getElementById("box2").checked;
+    const cardError = document.getElementById("checkbox-error");
+
+    if (!callIn && !autoPay) {
+      cardError.style.display = "block";
+      isValid = false;
+    } else {
+      cardError.style.display = "none";
+    }
+  }
+
+  if (!isValid) {
+    e.preventDefault();
+  }
+});
+</script>
+
 </body>
 </html>
