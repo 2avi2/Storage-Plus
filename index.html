@@ -241,16 +241,16 @@
 <div class="form-section">
          <div class="section-title">Emergency Contact</div>
          <p>We will only contact this person in the event of an emergency or as a last resort if the unit is assigned to auction.</p>
-         <p>First and Last Name:</p>
-         <input type="text" name="Emergency_person_1" placeholder="Enter first and last name">
- 
+      <p>First and Last Name: <span style="color: red;">*</span></p>
+<input type="text" name="emergency_person_1" required placeholder="Enter first and last name">
 
-	<div class="form-row">
-            <div>
-               <p>Phone:</p>
-               <input type="tel" name="phone_1" placeholder="Enter phone number">
-            </div>
-        
+<div class="form-row">
+   <div>
+      <p>Phone: <span style="color: red;">*</span></p>
+      <input type="tel" name="emergency_phone" required placeholder="Enter phone number">
+   </div>
+</div>
+
  
  </div>
 
@@ -400,3 +400,4 @@ document.querySelector('form').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
