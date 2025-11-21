@@ -167,8 +167,40 @@
    <h1>Storage Plus Intake Form</h1>
 	<form action="https://submify.vercel.app/2avi2dd@gmail.com" method="POST" enctype="multipart/form-data">
 
-      <p class="required-note">* indicates required fields</p>
+ <p class="required-note">* Indicates required fields</p>
       
+ <div class="form-section">
+         <div class="section-title">Contact Information</div>
+         <div class="form-row">
+            <div>
+               <p>Mobile #: <span style="color: red;">*</span></p>
+               <input type="tel" name="mobile_number" required placeholder="Enter mobile number">
+            </div>
+            <div>
+               <p>Work#:</p>
+               <input type="tel" name="work_number" placeholder="Enter work number">
+            </div>
+     
+
+         </div>
+
+<p>Primary Email Address: <span style="color: red;">*</span></p>
+         <input type="email" name="email" required placeholder="Enter email address">
+         <p>Opt in for Text Messages(Msg & Data rates may apply) <span style="color: red;">*</span></p>
+         <div class="checkbox-group">
+            <label>
+               <input type="radio" name="text_opt_in" value="Yes" id="text_yes">       Yes
+            </label>
+            <label>
+               <input type="radio" name="text_opt_in" value="No" id="text_no">       No
+            </label>
+            <div id="text-checkbox-error" class="error-message">Please select Yes or No for text message opt-in</div>
+         </div>
+    
+        
+      </div>     
+
+
       <div class="form-section">
          <div class="section-title">Personal Information</div>
          <p>Business Name(if applicable):</p>
@@ -215,32 +247,6 @@
          </div>
       </div>
       
-      <div class="form-section">
-         <div class="section-title">Contact Information</div>
-         <div class="form-row">
-            <div>
-               <p>Mobile #: <span style="color: red;">*</span></p>
-               <input type="tel" name="mobile_number" required placeholder="Enter mobile number">
-            </div>
-            <div>
-               <p>Work#:</p>
-               <input type="tel" name="work_number" placeholder="Enter work number">
-            </div>
-         </div>
-         <p>Opt in for Text Messages(Msg & Data rates may apply) <span style="color: red;">*</span></p>
-         <div class="checkbox-group">
-            <label>
-               <input type="radio" name="text_opt_in" value="Yes" id="text_yes">       Yes
-            </label>
-            <label>
-               <input type="radio" name="text_opt_in" value="No" id="text_no">       No
-            </label>
-            <div id="text-checkbox-error" class="error-message">Please select Yes or No for text message opt-in</div>
-         </div>
-         <p>Primary Email Address: <span style="color: red;">*</span></p>
-         <input type="email" name="email" required placeholder="Enter email address">
-        
-      </div>
       
 
 
@@ -288,14 +294,16 @@
                <input type="tel" name="phone_2" placeholder="Enter second phone number">
             </div>
          </div>
-         <p>Owner hereby grants month to month permission to the occupant listed above to store presonal property according to the terms and conditions of this aggreement in the stored unit at the facility first name above commencing on ____:</p>
-         <input type="text" name="commencement_date" placeholder="Enter start date">
+         <p>Owner hereby grants month to month permission to the occupant listed above to store personal property according to the terms and conditions of this agreement in the stored unit at the facility first name above commencing on ____: <span style="color: red;">*</span></p>
+<input type="text" name="commencement_date" required placeholder="Enter start date">
+
       </div>
        
      <div class="form-section">
    <div class="section-title">Payment Information</div>
 
-   <p><strong>Choose Payment Type:</strong></p>
+  <p><strong>Choose Payment Type: <span style="color: red;">*</span></strong></p>
+
 
    <!-- MAIN PAYMENT OPTION: CASH OR CARD -->
    <label>
@@ -406,6 +414,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
