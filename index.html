@@ -302,64 +302,10 @@
 
       </div>
        
-     <div class="form-section">
-   <div class="section-title">Payment Information</div>
-
-  <p><strong>Choose Payment Type: <span style="color: red;">*</span></strong></p>
-
-
-   <!-- MAIN PAYMENT OPTION: CASH OR CARD -->
-   <label>
-      <input type="radio" name="payment_type" value="Cash" onclick="togglePaymentOptions()">
-      Cash
-   </label>
-
-   <label>
-      <input type="radio" name="payment_type" value="Card" onclick="togglePaymentOptions()">
-      Card
-   </label>
-
-   <div id="payment-type-error" class="error-message">Please select Cash or Card</div>
-
-   <br><br>
-
-   <!-- HIDDEN UNTIL CARD IS SELECTED -->
-   <div id="cardSubOptions" class="hidden">
-
-      <p><strong>Card Payment Options:</strong></p>
-
-      <label>
-         <input type="radio" id="box1" name="payment_method" value="Call In Payment">
-         Call-In Payment
-      </label>
-
-      <label>
-         <input type="radio" id="box2" name="payment_method" value="Auto-payment">
-         Auto-payment
-      </label>
-
-      <div id="checkbox-error" class="error-message">Please select a card payment option</div>
-
-      <br><br>
-
-
-      <!-- NEW CARD DETAILS FIELDS (only show when Card is selected) -->
-      <p>Card Number: <span style="color: red;">*</span></p>
-      <input type="text" name="card_number" placeholder="Enter card number" required>
-
-      <p>CVV: <span style="color: red;">*</span></p>
-      <input type="text" name="card_cvv" placeholder="Enter CVV" required maxlength="4">
-
-      <p>Expiration Date (MM/YY): <span style="color: red;">*</span></p>
-      <input type="text" name="card_expiration" placeholder="MM/YY" required>
-
-
-
-     
-</div>
+  
 <div class="form-section">
-  <div class="section-title">Government Issued ID Upload</div>
-  <p>Please upload a clear photo of your government-issued ID (Driver’s License, Passport, etc.) <span style="color: red;">*</span></p>
+  <div class="section-title">ID Upload</div>
+  <p>Please upload a clear photo  <span style="color: red;">*</span></p>
   <input type="file" name="id_upload" accept="image/*" required>
 </div>
 
@@ -377,59 +323,12 @@
    </form>
    
 <script>
-function togglePaymentOptions() {
-  const cardSelected = document.querySelector('input[name="payment_type"][value="Card"]').checked;
-  const cardDiv = document.getElementById("cardSubOptions");
 
-  if (cardSelected) {
-    cardDiv.classList.remove("hidden");
-  } else {
-    cardDiv.classList.add("hidden");
-
-    // Clear card-only selections if user switches to CASH
-    document.getElementById("box1").checked = false;
-    document.getElementById("box2").checked = false;
-  }
-}
-
-document.querySelector('form').addEventListener('submit', function(e) {
-
-  // Main payment type validation
-  const cash = document.querySelector('input[name="payment_type"][value="Cash"]').checked;
-  const card = document.querySelector('input[name="payment_type"][value="Card"]').checked;
-  const typeError = document.getElementById("payment-type-error");
-
-  let isValid = true;
-
-  if (!cash && !card) {
-    typeError.style.display = "block";
-    isValid = false;
-  } else {
-    typeError.style.display = "none";
-  }
-
-  // If CARD is chosen, enforce sub-options
-  if (card) {
-    const callIn = document.getElementById("box1").checked;
-    const autoPay = document.getElementById("box2").checked;
-    const cardError = document.getElementById("checkbox-error");
-
-    if (!callIn && !autoPay) {
-      cardError.style.display = "block";
-      isValid = false;
-    } else {
-      cardError.style.display = "none";
-    }
-  }
-
-  if (!isValid) {
-    e.preventDefault();
-  }
-});
 </script>
 
 </body>
 </html>
+
 
 
 
