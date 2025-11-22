@@ -165,8 +165,7 @@
 <body>
    <img src="./1.png" alt="Storage Plus Logo" class="logo">
    <h1>Storage Plus Intake Form</h1>
-<form action="https://script.google.com/macros/s/AKfycbyqYL3pLyejuCEi6isLvOqZunjQfdYQcnRgyeXkjz9nb9qMQp2mJm-oKVc2j2PElvAwyg/exec" method="POST" enctype="multipart/form-data">
-
+<form name="storage-plus-intake" method="POST" data-netlify="true" enctype="multipart/form-data">
 
 
 
@@ -317,7 +316,9 @@
 
       </div>
       
-	<input type="hidden" name="_next" value="https://2avi2.github.io/Storage-Plus/thank-you.html">
+<input type="hidden" name="bot-field" /> 
+
+<input type="hidden" name="_redirect" value="/thank-you.html" /> 
 
       <button type="submit">Submit Form</button>
    </form>
@@ -328,6 +329,7 @@
 
 </body>
 </html>
+
 
 
 
