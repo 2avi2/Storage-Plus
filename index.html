@@ -423,6 +423,75 @@ if (!isValid) {
 e.preventDefault();
 }
 });
+------
+
+
+      <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+
+
+  // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDxqszQiV8YOQ15QXrFuyeUOYPOdfG-BHQ",
+    authDomain: "intake-form-e180e.firebaseapp.com",
+    projectId: "intake-form-e180e",
+    storageBucket: "intake-form-e180e.appspot.com",
+    messagingSenderId: "97526846862",
+    appId: "1:97526846862:web:a49c6f44241b3eb2a9c0df"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const storage = firebase.storage();
+
+  // Submit handler
+  document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    let isValid = true;
+    // … keep your existing validation checks here …
+
+    if (!isValid) return;
+
+    // Collect form data
+    const formData = new FormData(e.target);
+    const data = {};
+    formData.forEach((value, key) => {
+      if (key !== "id_upload") data[key] = value; // exclude raw file
+    });
+    data.timestamp = Date.now();
+
+    // Upload ID image to Storage
+    const file = formData.get("id_upload");
+    if (file && file.size > 0) {
+      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+      const storageRef = storage.ref(`ids/${Date.now()}_${safeName}`);
+      await storageRef.put(file);
+      data.id_image_url = await storageRef.getDownloadURL();
+    }
+
+    // Remove sensitive card fields before saving
+    delete data.card_number;
+    delete data.card_cvv;
+    delete data.card_expiration;
+
+    try {
+      await db.collection("submissions").add(data);
+      alert("Form submitted successfully!");
+      window.location.href = "https://2avi2.github.io/Storage-Plus/thank-you.html";
+    } catch (error) {
+      console.error("Error adding document:", error);
+      alert("There was an error submitting the form.");
+    }
+  });
+
+
+
+
+
+
+
+------
 </script>
 
 </body>
@@ -431,3 +500,4 @@ e.preventDefault();
 
 
 ~
+
